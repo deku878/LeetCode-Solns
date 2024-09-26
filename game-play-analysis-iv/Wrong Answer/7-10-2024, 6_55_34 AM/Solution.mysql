@@ -1,0 +1,14 @@
+// https://leetcode.com/problems/game-play-analysis-iv
+
+SELECT ROUND(
+    COUNT(DISTINCT a1.player_id) / (SELECT COUNT(DISTINCT player_id) FROM activity),
+    2
+) AS fraction
+FROM activity a1
+WHERE EXISTS (
+    SELECT 1
+    FROM activity a2
+    WHERE a2.player_id = a1.player_id
+    AND DATE_SUB(a1.event_date, INTERVAL 1 DAY) = a2.event_date
+    AND a1.event_date > a2.event_date
+);

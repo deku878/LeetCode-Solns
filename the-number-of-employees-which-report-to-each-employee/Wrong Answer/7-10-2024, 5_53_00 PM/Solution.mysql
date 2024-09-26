@@ -1,0 +1,6 @@
+// https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee
+
+# Write your MySQL query statement below
+select e.employee_id,e.name,COUNT(r.employee_id) as reports_count,ROUND(SUM(r.age)/COUNT(r.employee_id),0) as average_age from Employees e
+join Employees r on e.employee_id=r.reports_to
+group by employee_id,e.name

@@ -1,0 +1,6 @@
+// https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier
+
+# Write your MySQL query statement below
+Select eu.unique_id,e.name from employees e
+left join EmployeeUNI eu
+on e.id=eu.id
